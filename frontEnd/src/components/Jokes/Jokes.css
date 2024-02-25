@@ -1,0 +1,272 @@
+.jokesContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.ul {
+    color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  
+}
+
+.flexBox {
+  display: flex;
+}
+
+.author {
+  width: 100%;
+  display: flex;
+  color: #97C257;
+  justify-content: space-between;
+  text-decoration: underline;
+  text-decoration-color: #7A925C; 
+  text-decoration-thickness: 1px; 
+  text-decoration-style:double; 
+}
+
+.boxAudioStart {
+  display: flex;
+  align-items: center;
+}
+
+
+/* --------Filtro y Top 10 */
+.filters {
+  width: 80%;
+  margin: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.textoBusqueda {
+  margin: 15px;
+}
+
+.iconTop10 {
+  max-width: 50px;
+  cursor: pointer;
+
+  transition: transform 0.3s ease-in-out;
+}.iconTop10:hover {
+  transform: scale(1.2); 
+}
+
+/* ------------------------- */
+
+.li {
+  font-family: 'Comic Sans MS', cursive;
+
+  display: flex;
+  flex-direction: column;
+  justify-content:center;
+  align-items: center;
+  margin-bottom: 35px;
+  padding-left:  15px;
+  border: 3px solid #7A925C;
+  box-shadow: 20px -15px #73726E, 20px 15px  #73726E;
+  border-radius: 20px;
+  font-size:larger;
+  min-width: 600px;
+  max-width: 80%;
+  min-height: 250px;
+  border-radius: 20px;
+  background: linear-gradient(
+      170deg,
+      rgba(58, 56, 56, 0.623) 0%,
+      rgb(31, 31, 31) 100%
+  );
+  box-shadow: 0 25px 15px rgba(0, 0, 0, 0.35);
+  
+}
+
+.chisteText {
+  max-width: 80%;
+}
+
+.btAddJoke{
+  width: 50px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.h3Joke {
+  margin: 10px;
+}
+
+/* Estilos para el icono flotante */
+.floatingIconBox {
+  /* width: 5px; */
+  /* height: 50px; */
+  position: fixed;
+  bottom: 25%;
+  right: 15%;
+  z-index: 9999;
+  cursor: pointer;
+}
+
+.floatingIcon {
+  scale: 6;
+  transition: width 0.3s ease-in-out;
+}
+@keyframes rotateAnimation {
+  0%, 100% {
+    transform: rotate(0deg); 
+  }
+  25% {
+    transform: rotate(-10deg); 
+  }
+  50% {
+    transform: rotate(20deg); 
+  }
+  75% {
+    transform: rotate(-10deg); 
+  }
+}
+
+.floatingIcon:hover {
+  animation: rotateAnimation 1s infinite; 
+}
+
+
+.imgStar {
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.imgAudio {
+    position: relative;
+    height: 25px;
+    cursor:pointer;
+    /* margin-left: 20px; */
+    cursor: pointer;
+    margin-right: 50%;
+  }
+  
+  .imgAudio:hover {
+    animation: vibrate 0.1s 1 linear;
+  }
+  
+  @keyframes vibrate {
+    0% {
+      transform: translateX(0);
+    }
+    25% {
+      transform: translateX(-4px);
+    }
+    50% {
+      transform: translateX(0);
+    }
+    75% {
+      transform: translateX(4px);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+  
+
+.buttonBox {
+    /* width: auto;uuuuuuuuu */
+    display: flex;
+    justify-content: space-between;
+    margin: 15px;
+
+}
+
+.boxJokes {
+
+    width: 100vh;
+
+}
+
+.uploadTime {
+  color: #97C257;
+}
+
+.score-start {
+  display: flex;
+  align-items: center;
+}
+
+/* ----------------------- */
+
+.flex {
+  display: flex;
+}
+
+.flexJoke {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+   
+}
+
+/* ---------------Score.js -----------------*/
+
+.score-container {
+  background-color: #73726E;
+  border-radius: 10px;
+  padding: 3px;
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+}
+
+.score-button {
+  width: 20px;
+  margin: 5px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}.score-button:hover {
+  transform: scale(1.25);
+}
+
+.averageScore {
+  width: 30px;
+}
+
+
+/* Estilos para dispositivos móviles */
+@media screen and (max-width: 768px) {
+  .ul {
+    align-items: flex-start;
+    padding: 0; 
+  }
+
+  .li {
+    min-width: 90%; 
+  }
+
+  .boxArea {
+    width: 80%; 
+  }
+
+  .boxJokes {
+
+    width: 100%;
+
+}
+
+  .author {
+    font-size: smaller; 
+  }
+
+  .chisteText {
+    max-width: 100%; 
+  }
+
+  .boxAudioStart {
+    flex-direction: row; 
+  }
+}

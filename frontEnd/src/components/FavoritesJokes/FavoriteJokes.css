@@ -1,0 +1,18 @@
+.btnAtras {
+    width: 60px;
+    margin-left: 20px;
+    padding: 10px;
+}
+
+.CardUsersData {
+    width: 700px;
+    padding: 20px;
+}
+
+@media (max-width: 768px) {
+    .CardUsersData {
+        width: 100%;
+    }
+}
+
+

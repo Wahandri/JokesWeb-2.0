@@ -1,0 +1,30 @@
+.btnDelete {
+    width: 30px;
+    cursor: pointer;
+
+}
+
+.btnsFavorite {
+    display: flex;
+    gap: 20px;
+    margin-top: 15px;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ownBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.ownBox2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
