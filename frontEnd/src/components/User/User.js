@@ -34,9 +34,9 @@ export default function User() {
   return (
     <>
       <Header />
-      <div className="flex">
+      <div className="flex longH">
         <div className="boxComponent">
-          <div className="boxComponent boxArea">
+          <div className="boxComponent boxUser boxArea">
             <div className='myRed1'>
               <p>
                 <strong className='greenColor'>Nombre de usuario:</strong> <span className='whiteColor'>{user.username}</span>
@@ -61,7 +61,7 @@ export default function User() {
                 <p className="">CHISTES PROPIOS</p>
               </Link>
               <Link className="bt" to="/user/data">
-                <p className=""> CAMBIAR DATOS DE USUARIO</p>
+                <p className=""> CAMBIAR DATOS</p>
               </Link>
               <Link className="bt" to="/user/delete">
                 <p className="">ELIMINAR USUARIO</p>

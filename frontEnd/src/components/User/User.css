@@ -1,3 +1,13 @@
+.boxUser {
+    padding-bottom: 60px;
+    padding-top: 60px;
+
+}
+
+.longH {
+    height: 460px;
+}
+
 .myRed {
     display: grid;
     grid-template-columns: 1fr 1fr;

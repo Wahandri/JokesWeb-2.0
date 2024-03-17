@@ -8,6 +8,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 40px;
   
 }
 
@@ -240,7 +241,6 @@
 /* Estilos para dispositivos móviles */
 @media screen and (max-width: 768px) {
   .ul {
-    align-items: flex-start;
     padding: 0; 
   }
 
@@ -249,7 +249,7 @@
   }
 
   .boxArea {
-    width: 80%; 
+    width: 100%; 
   }
 
   .boxJokes {
@@ -269,4 +269,8 @@
   .boxAudioStart {
     flex-direction: row; 
   }
+}
+
+@media screen and (max-width: 600px) {
+  
 }

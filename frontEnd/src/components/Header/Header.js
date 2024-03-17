@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-
 import "./Header.css";
 import logo from "../../images/logotipo.png";
 import exit from "../../images/exit.png";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-
 import menu from "../../images/menu.png";
+import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -32,25 +31,30 @@ export default function Header() {
     return location.pathname === path;
   };
 
+  const handleConfirmLogout = () => {
+    setConfirmLogout(true);
+  };
+
+  const handleCancelLogout = () => {
+    setConfirmLogout(false);
+  };
+
+  const handleLogoutConfirmed = () => {
+    handleLogout();
+    setConfirmLogout(false);
+  };
+
   return (
     <div className="contentHeader">
       <div className={`boxHeader ${menuOpen ? "menuOpen" : ""}`}>
-        <Link
-          to="/jokes"
-          onClick={closeMenu}
-          className="imgLogo contenedor-rotacion"
-        >
+        <Link to="/jokes" onClick={closeMenu} className="imgLogo contenedor-rotacion">
           <img className="imgLogo rotacion" src={logo} title="Inicio" alt="" />
         </Link>
         <div className="menuButton" onClick={toggleMenu}>
-          <img className="iconMenuHeader" src={menu} title="Menu"  alt="menu" />
+          <img className="iconMenuHeader" src={menu} title="Menu" alt="menu" />
         </div>
         <ul className="navBar">
-          <Link
-            onClick={closeMenu}
-            className={`linkLi ${isActive("/jokes") ? "active" : ""}`}
-            to="/jokes"
-          >
+          <Link onClick={closeMenu} className={`linkLi ${isActive("/jokes") ? "active" : ""}`} to="/jokes">
             Inicio
           </Link>
           <hr className="line" />
@@ -62,48 +66,30 @@ export default function Header() {
             Añadir
           </Link>
           <hr className="line" />
-          <Link
-            onClick={closeMenu}
-            className={`linkLi ${isActive("/user") ? "active" : ""}`}
-            to="/user"
-          >
+          <Link onClick={closeMenu} className={`linkLi ${isActive("/user") ? "active" : ""}`} to="/user">
             Perfil
           </Link>
           <hr className="line" />
-          <Link
-            onClick={closeMenu}
-            className={`linkLi ${isActive("/top") ? "active" : ""}`}
-            to="/top"
-          >
+          <Link onClick={closeMenu} className={`linkLi ${isActive("/top") ? "active" : ""}`} to="/top">
             Top
           </Link>
         </ul>
         <div className="socialNetworkIcons">
-          <div className="boxBtnExit" onClick={() => setConfirmLogout(true)}>
+          <div className="boxBtnExit" onClick={handleConfirmLogout}>
             <img className="btnExit" src={exit} alt="" />
           </div>
         </div>
-        {confirmLogout && (
-          <div className="overlay" onClick={() => setConfirmLogout(false)}>
-            <div className="logoutConfirm" onClick={(e) => e.stopPropagation()}>
-              <p>¿Estás seguro de que quieres cerrar sesión?</p>
-              <div className="flexBtw">
-                <button className="linkLi" onClick={handleLogout}>
-                  Aceptar
-                </button>
-                <button
-                  className="linkLi"
-                  onClick={() => setConfirmLogout(false)}
-                >
-                  Cancelar
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
       </div>
       <div className="empyHeader"> </div>
       <div className="spaceHeader"> </div>
+
+      {confirmLogout && (
+        <ConfirmationModal
+          message="¿Estás seguro de que quieres cerrar sesión?"
+          onConfirm={handleLogoutConfirmed}
+          onCancel={handleCancelLogout}
+        />
+      )}
     </div>
   );
 }

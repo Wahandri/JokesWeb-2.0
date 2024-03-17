@@ -6,11 +6,13 @@ import { useUserContext } from '../../UserContext';
 import filledStarIcon from "../../images/deleteFavorite.png";
 import AudioButton from '../AudioButton/AudioButton';
 import Header from '../Header/Header';
+import ConfirmationModal from '../ConfirmationModal/ConfirmationModal';
 
 export default function FavoritesJokes() {
   const { user } = useUserContext();
   const [favoriteJokes, setFavoriteJokes] = useState([]);
-
+  const [showConfirmation, setShowConfirmation] = useState(false);
+  const [selectedJokeId, setSelectedJokeId] = useState(null);
 
   // Recibir chistes favoritos
   useEffect(() => {
@@ -28,26 +30,36 @@ export default function FavoritesJokes() {
 
   // Función para eliminar un chiste de favoritos
   const handleRemoveFromFavorites = (chisteId) => {
-    if (window.confirm('¿Estás seguro de eliminar el chiste de favoritos?')) {
-      // Realiza una solicitud DELETE para eliminar el chiste de favoritos
-      fetch(`/jokes/${chisteId}/favorite`, {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ userId: user._id }),
-      })
-        .then(response => response.json())
-        .then(data => {
-          console.log("Updated favorite jokes data:", data);
+    setSelectedJokeId(chisteId);
+    setShowConfirmation(true);
+  };
 
-          // Actualiza el estado de favoriteJokes
-          setFavoriteJokes(prevFavoriteJokes => prevFavoriteJokes.filter(chiste => chiste._id !== chisteId));
-        })
-        .catch(error => {
-          console.error('Error al eliminar de favoritos:', error);
-        });
-    }
+  // Función para confirmar la eliminación
+  const handleConfirmDelete = () => {
+    // Realiza una solicitud DELETE para eliminar el chiste de favoritos
+    fetch(`/jokes/${selectedJokeId}/favorite`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ userId: user._id }),
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log("Updated favorite jokes data:", data);
+
+        // Actualiza el estado de favoriteJokes
+        setFavoriteJokes(prevFavoriteJokes => prevFavoriteJokes.filter(chiste => chiste._id !== selectedJokeId));
+        setShowConfirmation(false);
+      })
+      .catch(error => {
+        console.error('Error al eliminar de favoritos:', error);
+      });
+  };
+
+  // Función para cancelar la eliminación
+  const handleCancelDelete = () => {
+    setShowConfirmation(false);
   };
 
   return (
@@ -83,6 +95,14 @@ export default function FavoritesJokes() {
           )}
         </div>
       </div>
+      {/* Mostrar el modal de confirmación si showConfirmation es true */}
+      {showConfirmation && (
+        <ConfirmationModal
+          message="¿Estás seguro de eliminar el chiste de favoritos?"
+          onConfirm={handleConfirmDelete}
+          onCancel={handleCancelDelete}
+        />
+      )}
     </>
   );
 }

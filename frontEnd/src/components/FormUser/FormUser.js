@@ -3,6 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import "./FormUser.css";
 import logotipo from "../../images/logotipo.png";
 import apiUrl from '../configURL';
+import MyAlert from '../MyAlert/MyAlert';
 
 export default function FormUser() { 
   const [username, setUsername] = useState('');
@@ -11,6 +12,7 @@ export default function FormUser() {
   const [confirmPassword, setConfirmPassword] = useState(''); // Nuevo estado para confirmar la contraseña
   const [passwordError, setPasswordError] = useState(''); // Mensaje de error para contraseñas no coincidentes
   const navigate = useNavigate();
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -41,20 +43,22 @@ export default function FormUser() {
       const data = await response.json();
 
       if (response.ok) {
-        console.log('Usuario creado exitosamente');
-        console.log('Nuevo Usuario:', data.savedUser);
 
-        alert('Usuario creado correctamente');
+
 
         // Limpia los campos del formulario después de crear el usuario
         setUsername('');
         setEmail('');
         setPassword('');
         setConfirmPassword('');
+        setPasswordError(''); 
+        // Muestra el mensaje de éxito
+        setShowSuccessMessage(true);
 
-        setPasswordError(''); // Limpia el mensaje de error
-
-        navigate("/");
+        // Redirige a la página principal después de un cierto tiempo
+        setTimeout(() => {
+          navigate("/");
+        }, 2500);
       } else {
         console.error('Error al crear el usuario:', data.error);
         alert('Error al ingresar datos');
@@ -66,8 +70,8 @@ export default function FormUser() {
 
   return (
     <div className='base-login'>
-      <div className="login-card">
-        <img className='img' src={logotipo} alt="" />
+      <div className="boxArea mt-40">
+        <img className='img mt-40' src={logotipo} alt="" />
         <h2>Create User</h2>
         <form className='form-login' onSubmit={handleSubmit}>
           <div className="form-group">
@@ -111,11 +115,13 @@ export default function FormUser() {
             />
           </div>
           {passwordError && <p className="error-message">{passwordError}</p>}
-          <button className='button-login bt' type="submit">Create</button>
+          <button className='linkLi mt-40' type="submit">Create</button>
         </form>
         <Link to="/">
           <p>Entrar con usuario existente</p>
         </Link>
+        {/* Muestra el mensaje si showSuccessMessage es true */}
+        {showSuccessMessage && <MyAlert text="¡Usuario creado correctamente!" />}
       </div>
     </div>
   );

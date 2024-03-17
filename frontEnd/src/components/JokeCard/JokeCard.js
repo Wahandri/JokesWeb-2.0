@@ -31,16 +31,10 @@ const JokeCard = () => {
 
   return (
     <div className='jokeCard'>
-      <div className="h4Title">
-        
-      </div>
-      
+      <h2 >Tu chiste del día</h2>
       <div className='chiste'>
-        <h2 >Tu chiste del día</h2>
-        <hr className='hr'></hr>
         <h4 className='h4' lang='es'>{chiste}</h4>
       </div>
-
       <div className='buttons'>
         <img 
           title='Otro chiste'

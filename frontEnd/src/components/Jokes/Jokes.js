@@ -10,6 +10,7 @@ import JokesFilters from './FilterAndTop';
 import Score from "./Score";
 import apiUrl from '../configURL';
 import Header from '../Header/Header';
+import by from '../../images/poesia.png';
 
 export default function Jokes() {
   const [chistes, setChistes] = useState([]);
@@ -206,7 +207,7 @@ return (
               {chistes.map((chiste) => (
                 <li className="boxArea" key={chiste._id}>
                   <div className="author">
-                    <p>{chiste.author}</p>
+                    <p><img src={by} alt=''/> {chiste.author}</p>
                     <div className="uploadTime">
                       <h6 className='greenColor'>{formatTimeDifference(chiste.createdAt)}</h6>
                     </div>

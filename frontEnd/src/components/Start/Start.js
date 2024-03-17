@@ -13,19 +13,18 @@ export default function Start() {
   };
 
   return (
-    <div className='base'>
-      <div className='logoContainer'>
-        <div className='imgContainer'>
+    <div className='boxStart flexCenterColums'>
+      <div className='boxArea mt-40'>
+        <div className='logoContainer'>
           <img className='img' src={logotipo} alt="" />
-          <span className="developerText">Desarrollado por Wahandri</span>
         </div>
-      </div>
-      <div className='indexBox'>
-        <div className="jokeCard">
-          <JokeCard />
-        </div>
-        <div className="loginCard">
-          <Login onLogin={handleSuccessfulLogin} />
+        <div className=' indexBox'>
+          <div className="jokeCard">
+            <JokeCard />
+          </div>
+          <div className="loginCard">
+            <Login onLogin={handleSuccessfulLogin} />
+          </div>
         </div>
       </div>
     </div>

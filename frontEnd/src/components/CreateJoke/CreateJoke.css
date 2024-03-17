@@ -1,5 +1,9 @@
 .boxCreateJoke {
-    width: 600px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .jokeForm{
@@ -14,6 +18,10 @@
     align-items: center;
     width: 80%;
     box-shadow: 30px 30px #73726E, 30px 30px #73726E;
+}
+
+.message {
+    color: #97C257;
 }
 
 .btnsCreate {

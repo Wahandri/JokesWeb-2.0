@@ -2,8 +2,6 @@
     display: flex;
     width: 100%;
     justify-content: center;
-    
-    height: 90vh;
 }
 
 .login-card {
@@ -24,7 +22,10 @@
 .form-login {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 10px;
+    margin-bottom: 40px;
 }
 
 .button-login {

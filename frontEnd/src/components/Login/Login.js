@@ -63,6 +63,7 @@ const Login = ({ onLogin }) => {
       <h2>Iniciar sesión</h2>
       <form className='formLogin' onSubmit={handleSubmit}>
         <input
+          className='inputSize'
           placeholder='Email'
           type="email"
           id="email"
@@ -71,6 +72,7 @@ const Login = ({ onLogin }) => {
           required
         />
         <input
+          className='inputSize'
           placeholder='Contraseña'
           type="password"
           id="password"
@@ -78,11 +80,11 @@ const Login = ({ onLogin }) => {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <button className='bt' type="submit">
+        <button className='linkLi mt-20' type="submit">
           Iniciar sesión
         </button>
       </form>
-      <Link to="/login/create">
+      <Link to="/login/create" className='mt-20'>
         <p>Crear usuario nuevo</p>
       </Link>
     </div>

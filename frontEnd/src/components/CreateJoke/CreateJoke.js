@@ -4,11 +4,14 @@ import './CreateJoke.css';
 import AudioButton from '../AudioButton/AudioButton';
 import apiUrl from '../configURL';
 import Headers from '../Header/Header';
+import MyAlert from '../MyAlert/MyAlert';
+import { useNavigate } from 'react-router-dom';
 
 const CreateJoke = () => {
   const { user } = useUserContext();
   const [jokeText, setJokeText] = useState('');
   const [message, setMessage] = useState('');
+  const navigate = useNavigate();
 
   const charLimit = 240;
 
@@ -34,7 +37,7 @@ const CreateJoke = () => {
     // Validación de longitud del texto del chiste
     if (jokeText.length > charLimit) {
       setMessage('El chiste es demasiado largo. Debe tener menos de 240 caracteres.');
-      return; // No envíes el chiste al servidor si es demasiado largo
+      return; 
     }
 
     try {
@@ -52,6 +55,9 @@ const CreateJoke = () => {
 
         setMessage('Chiste añadido correctamente');
         setJokeText('');
+        setTimeout(() => {
+          navigate('/jokes');
+        }, 2000);
       } else {
         const errorData = await response.json();
         console.error('Error al agregar el chiste:', errorData.error);
@@ -67,8 +73,8 @@ const CreateJoke = () => {
   return (
     <>  
     <Headers />                     
-        <div className="w-100 flexCenter">
-          <form className="boxComponent boxCreateJoke boxArea" onSubmit={handleSubmit}>
+        <div className="boxCreateJoke">
+          <form className="boxComponent boxArea" onSubmit={handleSubmit}>
             <textarea
               className="textAreaCreateJoke"
               rows="5"
@@ -85,11 +91,12 @@ const CreateJoke = () => {
               </span>
               <AudioButton text={jokeText} />
             </div>
-            <button className="bt buttonSubmit" type="submit">
+            <button className="linkLi buttonSubmit" type="submit">
               Añadir Chiste
             </button>
+            {message && <p className="message">{message}</p>}
+            {message && <MyAlert text="¡Añadiste un nuevo chiste!" />}
           </form>
-          {message && <p className="message">{message}</p>}
         </div>
       </>
   );

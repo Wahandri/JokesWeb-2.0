@@ -8,6 +8,10 @@
 .empyHeader {
     height: 130px;
     background-color: #ffffff;
+    height: 130px;
+    margin-left: 9px;
+    margin-right: 9px;
+    border-radius: 20px;
     position: fixed;
     top: 0;
     left: 0;
@@ -95,7 +99,7 @@
 .imgLogo {
     margin-left: 20px;
     display: block;
-    width: 110px;
+    width: 70px;
     
     
 } .imgLogoSimona:hover {
@@ -190,6 +194,7 @@
         flex-direction: column; 
         position: absolute;
         top: 100px;
+        padding-top: 20px;
         left: 0;
         right: 0;
         backdrop-filter: blur(8px);
@@ -199,7 +204,7 @@
     .line {
         display: inline;
         width: 80%;
-        border: 1px solid #8D50FF;
+        border: 1px solid #ffffff;
     }
 
     .menuButton {

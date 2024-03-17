@@ -6,11 +6,12 @@ import { Link } from 'react-router-dom';
 import atras from '../../images/atras.png';
 import btDelete from '../../images/delete.png';
 import btOk from "../../images/ok.png";
-import editar from "../../images/editar.png";
+import editar from '../../images/editar.png';
 import MediaIcon from '../MediaScore/MediaScore';
 import Header from '../Header/Header';
+import ConfirmationModal from '../ConfirmationModal/ConfirmationModal';
 
-export default function YourJokes() {
+export default function OwnJokes() {
   const { user } = useUserContext();
   const [yourJokes, setYourJokes] = useState([]);
   const token = localStorage.getItem('token');
@@ -19,6 +20,8 @@ export default function YourJokes() {
   const [editedJokeId, setEditedJokeId] = useState('');
   const [message, setMessage] = useState('');
   const [messageVisible, setMessageVisible] = useState(false);
+  const [showConfirmDelete, setShowConfirmDelete] = useState(false);
+  const [jokeToDeleteId, setJokeToDeleteId] = useState(null);
 
   useEffect(() => {
     console.log('Fetching your jokes...');
@@ -38,39 +41,47 @@ export default function YourJokes() {
       });
   }, [user.username]);
 
-  const deleteJoke = async (chisteId) => {
-    if (window.confirm('¿Estás seguro de eliminar este chiste?')) {
-      try {
-        console.log('Deleting joke...');
+  const handleDeleteJoke = async (chisteId) => {
+    setShowConfirmDelete(true);
+    setJokeToDeleteId(chisteId);
+  };
 
-        const response = await fetch(`/jokes/${chisteId}`, {
-          method: 'DELETE',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`,
-          },
-        });
+  const confirmDeleteJoke = async () => {
+    if (!jokeToDeleteId) return;
 
-        console.log('Respuesta del servidor:', response.status);
+    try {
+      console.log('Deleting joke...');
 
-        if (response.ok) {
-          console.log('Chiste eliminado correctamente.');
-          const updatedYourJokes = yourJokes.filter(
-            (chiste) => chiste._id !== chisteId
-          );
-          setYourJokes(updatedYourJokes);
-        } else {
-          const data = await response.json();
-          console.error('Error al eliminar el chiste:', data.error);
-          alert(data.error);
-        }
-      } catch (error) {
-        console.error('Error al eliminar el chiste:', error);
-        alert('Error al eliminar el chiste. Inténtalo de nuevo más tarde.');
+      const response = await fetch(`/jokes/${jokeToDeleteId}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      console.log('Respuesta del servidor:', response.status);
+
+      if (response.ok) {
+        console.log('Chiste eliminado correctamente.');
+        const updatedYourJokes = yourJokes.filter(
+          (chiste) => chiste._id !== jokeToDeleteId
+        );
+        setYourJokes(updatedYourJokes);
+        setShowConfirmDelete(false);
+      } else {
+        const data = await response.json();
+        console.error('Error al eliminar el chiste:', data.error);
+        alert(data.error);
       }
-    } else {
-      console.log('Cancelado por el usuario.');
+    } catch (error) {
+      console.error('Error al eliminar el chiste:', error);
+      alert('Error al eliminar el chiste. Inténtalo de nuevo más tarde.');
     }
+  };
+
+  const cancelDeleteJoke = () => {
+    setShowConfirmDelete(false);
   };
 
   const saveChanges = async () => {
@@ -107,7 +118,7 @@ export default function YourJokes() {
           if (chiste._id === editedJokeId) {
             return { ...chiste, text: editedJoke };
           }
-          return chiste;
+          return chiste
         });
         setYourJokes(updatedYourJokes);
         setEditing(false);
@@ -131,12 +142,12 @@ export default function YourJokes() {
 
   return (
     <>
-    <Header />
+      <Header />
       <Link className="" title='Atras' to="/user">
         <img className='bt btnAtras' src={atras} alt="Atras" />
-      </Link> 
+      </Link>
       <div className="baseUser boxComponent flex">
-         {yourJokes.length > 0 && (
+        {yourJokes.length > 0 && (
           <ul className='gap-40 flexCenterColums'>
             {yourJokes.map((chiste) => (
               <li className='boxArea CardUsersData' key={chiste._id}>
@@ -179,7 +190,7 @@ export default function YourJokes() {
                         src={btDelete}
                         alt="Eliminar chiste"
                         title="Eliminar chiste"
-                        onClick={() => deleteJoke(chiste._id)}
+                        onClick={() => handleDeleteJoke(chiste._id)}
                       />
                     </div>
                   </div>
@@ -192,7 +203,13 @@ export default function YourJokes() {
         {yourJokes.length === 0 && <h4>No hay chistes propios.</h4>}
       </div>
 
+      {showConfirmDelete && (
+        <ConfirmationModal
+          message="¿Estás seguro de eliminar el chiste?"
+          onConfirm={confirmDeleteJoke}
+          onCancel={cancelDeleteJoke}
+        />
+      )}
     </>
-
   );
 }

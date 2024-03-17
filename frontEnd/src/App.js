@@ -27,22 +27,23 @@ function App() {
   return (
     <UserProvider>
       <JokeProvider> 
-        <BrowserRouter>
-
-          <Routes>
-            <Route path="/" element={<Start />} />
-            <Route path="/login/create" element={<FormUser />} />
-            <Route path="/jokes" element={<PrivateRoute element={<Jokes />} />} />
-            <Route path="/jokes/create" element={<PrivateRoute element={<CreateJoke />} />} />
-            <Route path="/user" element={<PrivateRoute element={<User />} />} />
-            <Route path="/user/favorites" element={<PrivateRoute element={<FavoritesJokes />} />} />
-            <Route path="/user/own" element={<PrivateRoute element={<OwnJokes />} />} />
-            <Route path="/user/data" element={<PrivateRoute element={<UserData/>} />} />
-            <Route path="/user/delete" element={<PrivateRoute element={<DeleteUser/>} />} />
-            <Route path="/top" element={<PrivateRoute element={<TopJokes />} />} />
-          </Routes>
-        </BrowserRouter>
-        <Footer />
+        <div className="boxApp">
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Start />} />
+              <Route path="/login/create" element={<FormUser />} />
+              <Route path="/jokes" element={<PrivateRoute element={<Jokes />} />} />
+              <Route path="/jokes/create" element={<PrivateRoute element={<CreateJoke />} />} />
+              <Route path="/user" element={<PrivateRoute element={<User />} />} />
+              <Route path="/user/favorites" element={<PrivateRoute element={<FavoritesJokes />} />} />
+              <Route path="/user/own" element={<PrivateRoute element={<OwnJokes />} />} />
+              <Route path="/user/data" element={<PrivateRoute element={<UserData/>} />} />
+              <Route path="/user/delete" element={<PrivateRoute element={<DeleteUser/>} />} />
+              <Route path="/top" element={<PrivateRoute element={<TopJokes />} />} />
+            </Routes>
+          </BrowserRouter>
+          <Footer />
+        </div>
       </JokeProvider>
     </UserProvider>
   );
