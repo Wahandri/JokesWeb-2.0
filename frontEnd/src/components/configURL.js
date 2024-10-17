@@ -1,3 +1,3 @@
-const apiUrl = 'http://localhost:3001';
+const apiUrl = 'https://jokesweb-20-production.up.railway.app';
 
 export default apiUrl;
