@@ -10,9 +10,11 @@ RUN npm install
 # Copiar el código del backend
 COPY ./backEnd .
 
-# Servir frontend con el backend
+# Copiar el frontend antes de cambiar de directorio
+COPY ./frontEnd ./client
+
+# Construir el frontend
 WORKDIR /app/client
-COPY ./frontEnd/package*.json ./
 RUN npm install && npm run build
 
 # Volver al backend y correr el servidor
