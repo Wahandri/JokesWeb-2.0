@@ -14,7 +14,9 @@ const bodyParser = require("body-parser");
 
 // Usando middlewares para leer JSON y habilitar CORS
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors({
+  origin: 'https://jokes-web.vercel.app' // Permite solicitudes desde tu frontend
+}));
 
 app.use("/users", users);
 app.use("/jokes", jokes);
