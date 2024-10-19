@@ -26,7 +26,7 @@ app.use("/jokes", jokes);
 app.use("/login", login);
 
 // --Conectamos a la DB
-console.log("Intentando conectarse a la DB...");
+console.log("Conectarse a la DB...");
 mongoose.connect(process.env.MONGO_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
