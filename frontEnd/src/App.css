@@ -10,7 +10,7 @@
 Body {
     display: flex;
     flex-direction: column;
-    background-image: url(./images/fondo.png); 
+    
     background-size: 20%;
     background-color: #ffffff;
     font-weight: bold;
