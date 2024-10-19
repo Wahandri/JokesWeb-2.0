@@ -1,3 +1,3 @@
-const apiUrl = 'https://jokesweb-20-production.up.railway.app';
+const apiUrl = 'http://54.38.184.19:3001';
 
 export default apiUrl;
