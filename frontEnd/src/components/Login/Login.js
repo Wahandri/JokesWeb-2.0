@@ -48,7 +48,7 @@ const Login = ({ onLogin }) => {
         alert('Datos no válidos');
       }
     } catch (error) {
-      console.error('Error al enviar el formulario:', $(error));
+      console.error('Error al enviar el formulario:', error);
       alert('Error al enviar el formulario');
     }
   };
