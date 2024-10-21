@@ -41,7 +41,7 @@ const CreateJoke = () => {
     }
 
     try {
-      const response = await fetch(`${apiUrl}/jokes/create`, {
+      const response = await fetch(`/api/jokes/create`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

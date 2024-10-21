@@ -31,7 +31,7 @@ export default function FormUser() {
     try {
       const token = localStorage.getItem('token'); // Obtén el token almacenado en localStorage
       console.log(token);
-      const response = await fetch(`${apiUrl}/users/create`, {
+      const response = await fetch(`/api/users/create`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

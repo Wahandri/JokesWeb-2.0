@@ -26,7 +26,7 @@ export default function Jokes() {
   const fetchJokes = async (page, filter) => {
     try {
       const response = await fetch(
-        `${apiUrl}/jokes?page=${page}&filter=${filter}`,
+        `/api/jokes?page=${page}&filter=${filter}`,
         {
           method: 'GET',
           headers: {
@@ -86,7 +86,7 @@ export default function Jokes() {
         return;
       }
 
-      const response = await fetch(`${apiUrl}/jokes/${jokeId}/favorite`, {
+      const response = await fetch(`/api/jokes/${jokeId}/favorite`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -128,7 +128,7 @@ export default function Jokes() {
         return;
       }
 
-      const response = await fetch(`${apiUrl}/jokes/${jokeId}/favorite`, {
+      const response = await fetch(`/api/jokes/${jokeId}/favorite`, {
         method: 'DELETE', // Usar DELETE para eliminar de favoritos
         headers: {
           'Content-Type': 'application/json',
