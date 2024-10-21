@@ -4,7 +4,7 @@ import "./TopJokes.css";
 import top1 from "../../images/top1.png";
 import top2 from "../../images/top2.png";
 import top3 from "../../images/top3.png";
-import apiUrl from '../configURL';
+ 
 import Header from '../Header/Header';
 
 

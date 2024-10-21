@@ -5,7 +5,7 @@ import score2 from '../../images/score1.png';
 import score3 from '../../images/score2.png';
 import score4 from '../../images/score3.png';
 import score5 from '../../images/score4.png';
-import apiUrl from '../configURL';
+ 
 
 export default function Score({ chiste, user }) {
   const [userScore, setUserScore] = useState(0);

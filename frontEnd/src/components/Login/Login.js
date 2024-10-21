@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import "./Login.css";
 import { useUserContext } from '../../UserContext';
-import apiUrl from '../configURL';
+ 
 import jwt_decode from 'jwt-decode';
 
 const Login = ({ onLogin }) => {

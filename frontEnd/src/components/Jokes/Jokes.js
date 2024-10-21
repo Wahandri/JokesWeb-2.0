@@ -8,7 +8,7 @@ import AudioButton from "../AudioButton/AudioButton";
 import { useUserContext } from '../../UserContext';
 import JokesFilters from './FilterAndTop';
 import Score from "./Score";
-import apiUrl from '../configURL';
+ 
 import Header from '../Header/Header';
 import by from '../../images/poesia.png';
 

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import "./FormUser.css";
 import logotipo from "../../images/logotipo.png";
-import apiUrl from '../configURL';
+ 
 import MyAlert from '../MyAlert/MyAlert';
 
 export default function FormUser() { 

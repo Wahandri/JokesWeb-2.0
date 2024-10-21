@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useUserContext } from '../../UserContext';
 import './CreateJoke.css';
 import AudioButton from '../AudioButton/AudioButton';
-import apiUrl from '../configURL';
+ 
 import Headers from '../Header/Header';
 import MyAlert from '../MyAlert/MyAlert';
 import { useNavigate } from 'react-router-dom';

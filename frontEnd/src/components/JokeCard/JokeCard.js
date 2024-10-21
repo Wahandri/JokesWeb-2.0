@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import "./JokeCard.css";
 import iconUpdate from "../../images/btUpdate.png";
 import AudioButton from '../AudioButton/AudioButton';
-import apiUrl from '../configURL';
+ 
 
 const JokeCard = () => {
   const [chiste, setChiste] = useState('');
