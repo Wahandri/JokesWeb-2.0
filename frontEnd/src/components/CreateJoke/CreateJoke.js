@@ -6,6 +6,7 @@ import AudioButton from '../AudioButton/AudioButton';
 import Headers from '../Header/Header';
 import MyAlert from '../MyAlert/MyAlert';
 import { useNavigate } from 'react-router-dom';
+import apiUrl from '../configURL';
 
 const CreateJoke = () => {
   const { user } = useUserContext();
@@ -41,7 +42,7 @@ const CreateJoke = () => {
     }
 
     try {
-      const response = await fetch(`/api/jokes/create`, {
+      const response = await fetch(`${apiUrl}/api/jokes/create`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

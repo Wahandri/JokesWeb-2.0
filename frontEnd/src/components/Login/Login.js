@@ -4,6 +4,7 @@ import "./Login.css";
 import { useUserContext } from '../../UserContext';
  
 import jwt_decode from 'jwt-decode';
+import apiUrl from '../configURL';
 
 const Login = ({ onLogin }) => {
   const [email, setEmail] = useState('');
@@ -28,7 +29,7 @@ const Login = ({ onLogin }) => {
     event.preventDefault();
 
     try {
-      const response = await fetch(`/api/login`, {
+      const response = await fetch(`${apiUrl}/api/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

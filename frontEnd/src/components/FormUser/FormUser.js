@@ -4,6 +4,7 @@ import "./FormUser.css";
 import logotipo from "../../images/logotipo.png";
  
 import MyAlert from '../MyAlert/MyAlert';
+import apiUrl from '../configURL';
 
 export default function FormUser() { 
   const [username, setUsername] = useState('');
@@ -31,7 +32,7 @@ export default function FormUser() {
     try {
       const token = localStorage.getItem('token'); // Obtén el token almacenado en localStorage
       console.log(token);
-      const response = await fetch(`/api/users/create`, {
+      const response = await fetch(`${apiUrl}/api/users/create`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

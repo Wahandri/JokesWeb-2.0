@@ -11,6 +11,7 @@ import Score from "./Score";
  
 import Header from '../Header/Header';
 import by from '../../images/poesia.png';
+import apiUrl from '../configURL';
 
 export default function Jokes() {
   const [chistes, setChistes] = useState([]);
@@ -86,7 +87,7 @@ export default function Jokes() {
         return;
       }
 
-      const response = await fetch(`/api/jokes/${jokeId}/favorite`, {
+      const response = await fetch(`${apiUrl}/api/jokes/${jokeId}/favorite`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -128,7 +129,7 @@ export default function Jokes() {
         return;
       }
 
-      const response = await fetch(`/api/jokes/${jokeId}/favorite`, {
+      const response = await fetch(`${apiUrl}/api/jokes/${jokeId}/favorite`, {
         method: 'DELETE', // Usar DELETE para eliminar de favoritos
         headers: {
           'Content-Type': 'application/json',

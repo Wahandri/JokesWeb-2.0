@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import "./JokeCard.css";
 import iconUpdate from "../../images/btUpdate.png";
 import AudioButton from '../AudioButton/AudioButton';
+import apiUrl from '../configURL';
  
 
 const JokeCard = () => {
@@ -9,7 +10,7 @@ const JokeCard = () => {
 
   const obtenerChisteAleatorio = async () => {
     try {
-      const respuesta = await fetch(`/api/jokes/random`);
+      const respuesta = await fetch(`${apiUrl}/api/jokes/random`);
       const data = await respuesta.json();
       setChiste(data.joke.text);
       // setFunny(data.joke.funny);

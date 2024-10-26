@@ -6,13 +6,14 @@ import top2 from "../../images/top2.png";
 import top3 from "../../images/top3.png";
  
 import Header from '../Header/Header';
+import apiUrl from '../configURL';
 
 
 export default function TopJokes() {
   const [topJokes, setTopJokes] = useState([]);
 
   useEffect(() => {
-    fetch(`/api/jokes/alljokes`) // Obtén todos los chistes sin filtros
+    fetch(`${apiUrl}/api/jokes/alljokes`) // Obtén todos los chistes sin filtros
       .then((response) => response.json())
       .then((data) => {
         // Ordena los chistes de mayor a menor puntuación (score)
