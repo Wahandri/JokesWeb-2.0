@@ -12,7 +12,7 @@ export function JokeProvider({ children }) {
 
   const fetchJokes = async () => {
     try {
-      const response = await fetch(`/api/jokes`);
+      const response = await fetch(`${apiUrl}/api/jokes`);
       const data = await response.json();
       setJokes(data);
     } catch (error) {
