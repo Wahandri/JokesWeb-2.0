@@ -2,7 +2,7 @@
     "rewrites": [
       {
         "source": "/api/(.*)",
-        "destination": "https://54.38.184.19:3001/api/$1"
+        "destination": "https://wahandri.es/api/$1"
       }
     ]
   }
