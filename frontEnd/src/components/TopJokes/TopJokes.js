@@ -13,7 +13,7 @@ export default function TopJokes() {
   const [topJokes, setTopJokes] = useState([]);
 
   useEffect(() => {
-    fetch(`${apiUrl}/api/jokes/alljokes`) // Obtén todos los chistes sin filtros
+    fetch(`${apiUrl}/jokes/alljokes`) // Obtén todos los chistes sin filtros
       .then((response) => response.json())
       .then((data) => {
         // Ordena los chistes de mayor a menor puntuación (score)

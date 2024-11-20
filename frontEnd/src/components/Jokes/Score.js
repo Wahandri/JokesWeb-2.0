@@ -15,7 +15,7 @@ export default function Score({ chiste, user }) {
 
   const fetchAverageScore = useCallback(async () => {
     try {
-      const response = await fetch(`${apiUrl}/api/jokes/${chiste._id}/average-score`);
+      const response = await fetch(`${apiUrl}/jokes/${chiste._id}/average-score`);
       if (response.ok) {
         const data = await response.json();
         setAverageScore(data.averageScore);
@@ -61,7 +61,7 @@ export default function Score({ chiste, user }) {
       }
 
       // El usuario no ha votado antes, realiza una solicitud POST para crear un nuevo voto
-      const response = await fetch(`${apiUrl}/api/jokes/${chiste._id}/vote`, {
+      const response = await fetch(`${apiUrl}/jokes/${chiste._id}/vote`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
