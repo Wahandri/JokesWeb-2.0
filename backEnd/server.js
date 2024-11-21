@@ -18,10 +18,13 @@ const bodyParser = require("body-parser");
 app.use(bodyParser.json());
 
 app.use(cors({
-    origin: ["https://jokes-web.vercel.app", "https://jokes-web-2-0.vercel.app"], // Orígenes permitidos
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // Permite todos los métodos
-    allowedHeaders: ["Content-Type", "Authorization"], // Permite encabezados específicos
-    credentials: true // Si necesitas cookies o encabezados de autorización
+  origin: [
+      "https://jokes-web-2-0.vercel.app",
+      "https://jokes-web-2-0-23ws6bo6d-wahandris-projects.vercel.app"
+  ],
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true
 }));
 
 // Rutas
