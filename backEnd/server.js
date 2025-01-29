@@ -34,7 +34,7 @@ app.use("/login", login);
 
 // --Conectamos a la DB
 console.log("Conectarse a la DB...");
-mongoose.connect(process.env.MONGO_URL, {
+mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
