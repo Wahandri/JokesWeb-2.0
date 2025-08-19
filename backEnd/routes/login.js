@@ -1,11 +1,9 @@
-
 const express = require("express");
 const router = express.Router();
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
 const User = require("../models/user");
-const configSeed = require("./config"); 
 
 // Verificación de password encriptada
 router.post("/", async (req, res) => {
@@ -30,10 +28,9 @@ router.post("/", async (req, res) => {
       });
     }
 
-    console.log("Config SEED:", configSeed.SEED);
     const token = jwt.sign(
       { user: userDB },
-      configSeed.SEED, 
+      process.env.SEED,
       { expiresIn: "2h" }
     );
 
